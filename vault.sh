@@ -39,7 +39,7 @@ while : ; do
 
 		done)
 			echo -e "\033[38;5;46;1m Teleporting away...\033[0m"
-			rm -r ../Quantum_Vault
+			rm -r ../Quantum_Vault ;;
 		*)
 			break ;;
 	esac
