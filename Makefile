@@ -1,12 +1,12 @@
 NAME = #Program-name
-#FLAGS = #Compile flags -Wall -Wextra -Werror
+FLAGS = #Compile flags -Wall -Wextra -Werror
 
-#FILENAMES = Source files names (no extension or path)
-#INCL = -I [Include filenames]
-#LIBS = -L [Librairies to compile with if any]
+FILENAMES = #Source files names (no extension or path)
+INCL = -I incl/
+LIB = -L ~/.brew/lib -l SDL2 -l sdl2_image
 
-#SRCS = $(addprefix([path], $(addsuffix [extension], $(FILENAMES)))
-#OBJS = $(addprefix([path], $(addsuffix [extension], $(FILENAMES)))
+SRCS = $(addprefix srcs/, $(addsuffix .c, $(FILENAMES)))
+OBJS = $(addprefix objs/, $(addsuffix .o, $(FILENAMES)))
 
 all : $(NAME)
 
