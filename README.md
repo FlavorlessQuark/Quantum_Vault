@@ -7,4 +7,4 @@ I have decided to take coding a little bit more seriously. And so I have realize
 Same makefile, same functions being rewritten, same .h file structures...
 
 Not anymore.
-With my magic coding powers and the help of Bash-senpai I will finally triumph.
+With my magic coding powers and the help of Bash-senpai and GNUMake-sensei I will finally triumph.
