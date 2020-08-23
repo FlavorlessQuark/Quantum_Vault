@@ -47,7 +47,7 @@ while : ; do
 
 		done)
 			echo -e "\033[38;5;46;1m Teleporting away...\033[0m"
-			rm -rf ../Quantum_Vault
+			rm -rf Quantum_Vault
 			rm vault.sh
 			break ;;
 		*)
