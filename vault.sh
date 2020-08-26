@@ -28,8 +28,8 @@ while : ; do
 			echo -e "\033[38;5;9;1m Summoning a portal to the Math dimension...\033[0m"
 			mkdir -p lib
 			git clone https://github.com/FlavorlessQuark/Math_Tools tmp
-			cp tmp/*.h incl/
-			cp tmp/*.c srcs/
+			cp tmp/incl*.h incl/
+			cp tmp/srcs*.c srcs/
 			cp tmp/*.a lib/
 			rm -rf tmp
 			echo -e "\033[38;5;46;1m Loaded Math helper\033[0m"
