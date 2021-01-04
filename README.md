@@ -16,12 +16,17 @@ mv Quantum_vault/vault.sh .
 ./vault init sdl math phy done
 
   - **init**: Initializes current directory with incl, srcs & lib dir. Adds Makefile in current dir and main.c in srcs
-  
+
   - **sdl** : Adds SDL_helper functions to the directory previously initialized with **init**. Project will be ready to compile and displayed after
 WIN_H WIN_W and WIN_POS are set in SDL_master.h
 
   - **math** : Adds math helper functions.
-  
+
   - **phy** : Adds physics helper functions.
 
   - **done** : And then the vault closes...
+
+## NOTE:
+
+	This all neds to be updated
+	Aditionally running autodef.sh will add an include guard to unguarded .h files
