@@ -15,23 +15,22 @@ while : ; do
 			shift ;;
 		sdl)
 			echo -e "\033[38;5;9;1m Opening a wormhole to the SDL universe...\033[0m"
-			mkdir -p srcs/SDT
+			mkdir -p includes/SDLX includes/SDL2
 			git clone https://github.com/FlavorlessQuark/SDL_Tools tmp
-			cp tmp/Release/includes/SDLX includes
-			cp tmp/Release/SDLX srcs/SDLX
-			cp tmp/Dev/includes/SDL2 includes
-			cp tmp/Dev/libs libs
+			cp tmp/Release/includes/*.h includes/SDLX
+			cp tmp/Dev/libs/*.dylib libs
+			cp tmp/Dev/includes/SDL2/*.h includes/SDL2
+			cp tmp/Release/libSDLX.a libs
 			rm -rf tmp
 			echo -e "\033[38;5;46;1m Loaded SDL helper\033[0m"
 
 			shift ;;
 		math)
 			echo -e "\033[38;5;9;1m Summoning a portal to the Math dimension...\033[0m"
-			mkdir -p srcs/MT
 			mkdir -p includes/MT
 			git clone https://github.com/FlavorlessQuark/Math_Tools tmp
-			cp tmp/incl/*.h includes/MT
-			cp tmp/srcs/*.c srcs/MT
+			cp tmp/Release/includes/*.h includes/MT
+			cp tmp/Release/libMT.a libs
 			rm -rf tmp
 			echo -e "\033[38;5;46;1m Loaded Math helper\033[0m"
 		shift ;;
