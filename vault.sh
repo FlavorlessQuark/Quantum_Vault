@@ -18,9 +18,9 @@ while : ; do
 			mkdir -p includes/SDLX includes/SDL2
 			git clone https://github.com/FlavorlessQuark/SDL_Tools tmp
 			cp tmp/Release/includes/*.h includes/SDLX
-			cp tmp/Dev/libs/*.dylib libs
+			cp tmp/Dev/libs/* libs/
 			cp tmp/Dev/includes/SDL2/*.h includes/SDL2
-			cp tmp/Release/libSDLX.a libs
+			cp tmp/Release/libSDLX.a libs/libSDLX.a
 			rm -rf tmp
 			echo -e "\033[38;5;46;1m Loaded SDL helper\033[0m"
 
