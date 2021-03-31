@@ -1,33 +1,47 @@
-NAME = #Program-name
-FLAGS = #Compile flags -Wall -Wextra -Werror
+NAME = 
 
-FILENAMES = #Source files names (no extension or path)
-INCL = -I incl/
-LIB = -L ~/.brew/lib -l SDL2 -l sdl2_image
+DEBUG_FLAGS = -fsanitize=address
+FLAGS =
+INCLUDES = -I includes/ -I includes/SDL2/ -I includes/SDLX/
 
-SRCS = $(addprefix srcs/, $(addsuffix .c, $(FILENAMES)))
-OBJS = $(addprefix objs/, $(addsuffix .o, $(FILENAMES)))
+LIB_DIR = libs/
+LIBRARIES = $(LIB_DIR)libSDL2.dylib $(LIB_DIR)libSDL2_image.dylib $(LIB_DIR)libSDL2_ttf.dylib
+STATIC_LIB = -L -l $(LIB_DIR)libSDLX.a
 
-all : $(NAME)
+SRCS_DIR = srcs/
 
-objs/%.o : srcs/%.c
-	@/bin/mkdir -p objs
-	gcc $(FLAGS) -c $(INCL) $< -o $@
+BIN_DIR = bin/
 
-$(NAME): $(OBJS)
-	gcc $(FLAGS) $(INCL) $(LIB) $(OBJS) -o $(NAME)
+SRCS_NAMES =			\
+	main 				\
 
-clean :
-	rm -f $(OBJS)
 
-fclean : clean
-	rm -rf $(NAME)
+C_FILES =				\
+	$(addprefix $(SRCS_DIR), $(SRCS_NAMES))		\
 
-push : clean
-	git add .
-	git commit -m "$(MSG)"
-	git push origin master
+SRCS = $(addsuffix .c, $(C_FILES))
 
-re : fclean all
+OBJS = $(addprefix $(BIN_DIR), $(SRCS:.c=.o))
 
-.PHONY : $(NAME) clean fclean push re
+all: $(NAME)
+
+$(NAME): $(BIN_DIR) $(OBJS)
+	gcc $(FLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBRARIES) -L -l $(STATIC_LIB)
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+$(BIN_DIR)%.o: %.c
+	mkdir -p $(BIN_DIR)$(dir $<)
+	gcc $(FLAGS) $(INCLUDES) -c $< -o $@
+
+run: re clean
+	./$(NAME)
+
+clean:
+	rm -rf $(BIN_DIR)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
